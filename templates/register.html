@@ -1,0 +1,45 @@
+<!--
+Beau Albritton
+Registration page, with user registration fields and a generate password button, 
+when pressed, sends a generated password into the password form input.
+-->
+
+{% extends "base.html" %} {% block content %}
+<section class="register">
+    <form method="POST" action="{{ url_for('register') }}">
+        {% if error %}
+        <section class="error-message">
+            {{ error }}
+        </section>
+        {% endif %}
+
+        <section class="input-group">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" value="{{ request.form.username or '' }}">
+
+            <label for="password">Password:</label>
+            <input type="text" name="password" id="password" value="{{ generated_password or '' }}">
+        </section>
+
+        <section class="password-requirements">
+            <p>Password Requirements:</p>
+            <ul>
+                <li>8-25 characters</li>
+                <li>1 uppercase letter</li>
+                <li>1 lowercase letter</li>
+                <li>1 number</li>
+                <li>1 special character ('!', '@', '#', '$', '^', '&', '(', ')', '?')</li>
+            </ul>
+        </section>
+
+        <section class="form-actions">
+            <button type="submit" name="generate_password">Generate Secure Password</button>
+            <button type="submit">Register</button>
+        </section>
+    </form>
+
+    <section class="login-link">
+        Already have an account? <a href="{{ url_for('login') }}">Login here</a>
+    </section>
+</section>
+{% endblock %}

@@ -1,0 +1,41 @@
+<!--
+Beau Albritton
+Dashboard html that resembles structure for Lab 1. 
+Button functionality is limited and is only stylistic, changed by css rules in static/style.css
+-->
+
+{% extends "base.html" %} {% block content %}
+<section class="dashboard">
+    <h1>Welcome, {{ username }}!</h1>
+    <p>Role: {{ role }}</p>
+
+    <section class="menu-options">
+        <ul>
+            <li>
+                <button>1. Accounting Department</button>
+                <p>Accounting Department can be found on the 5th floor.</p>
+            </li>
+            <li>
+                <button>2. View Timesheet</button>
+                <p>Here is your time sheet! Just kidding.</p>
+            </li>
+            <li>
+                <button>3. I.T. Support</button>
+                <p>Contact IT at 123-456-7899.</p>
+            </li>
+            <li>
+                <button>4. Confidential Records</button>
+                <p>You are now viewing confidential records.</p>
+            </li>
+            <li>
+                <button>5. Guest Support</button>
+                <p>Guests of the world unite!.</p>
+            </li>
+        </ul>
+    </section>
+    <section>
+        <a href="{{ url_for('home') }}">Logout</a>
+    </section>
+
+</section>
+{% endblock %}

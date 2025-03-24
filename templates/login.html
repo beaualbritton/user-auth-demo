@@ -1,0 +1,44 @@
+<!--
+Beau Albritton
+Login page for flask app. Firstly, displays any error messages, like incorrect password or lock out attempts.
+Then takes 2 fields for login, username and password as a form for submission by user.
+-->
+
+{% extends "base.html" %} {% block content %}
+<section class="login">
+    {% if not locked %} {% if error %}
+    <section class="error-message">
+        {{ error }}
+    </section>
+    {% endif %} {% if alert %}
+    <section class="error-message">
+        {{ alert }}
+    </section>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('login') }}">
+        <section class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+
+            <button type="submit">Login</button>
+        </section>
+    </form>
+    <!---Lockout function, if locked out, then display only this, otherwise, all fields the above will be displayed -->
+    {% endif %} {% if locked %}
+    <section class="error-message">
+        You are locked out.
+    </section>
+    {% endif %}
+
+    <section>
+        Don't have an account? <a href="{{ url_for('register') }}">Register here</a>
+    </section>
+    <section>
+        <a href="{{ url_for('home') }}">Home</a>
+    </section>
+</section>
+{% endblock %}

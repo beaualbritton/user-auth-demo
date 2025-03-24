@@ -1,0 +1,21 @@
+{
+    "RECORDS": [{
+            "id": 1,
+            "username": "admin",
+            "pwhash": "hashed_password_here",
+            "role": "admin"
+        },
+        {
+            "id": 2,
+            "username": "user",
+            "pwhash": "hashed_password_here",
+            "role": "user"
+        },
+        {
+            "id": 3,
+            "username": "guest",
+            "pwhash": "hashed_password_here",
+            "role": "guest"
+        }
+    ]
+}

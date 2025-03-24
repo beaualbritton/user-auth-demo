@@ -1,0 +1,23 @@
+<!--
+Beau Albritton
+This is a basic template for other html files to extend upon, roughly based off of layout.html in catamount community bank.
+All of the html files in this project will be using flask's jinja2 template
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <h1>{{ heading }}</h1>
+    <!-- All credit to original author, Jim Eddy, for this line of code. Helps automate messages and alerts to user. (login fail, lockout, insecure password) -->
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %}
+    <div class="alert {{ category }}">{{ message }}</div>
+    {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock %}
+</body>
+
+</html>
